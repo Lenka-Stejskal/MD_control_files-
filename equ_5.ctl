@@ -13,7 +13,7 @@ gamma_ln=1.0,
 nstlim=1000000, dt=0.001,   !1ns
 iwrap=1, ioutfm=1,
 ntpr=5000, ntwr=50000, ntwx=5000, ntwe=0
-ntr=1, restraint_wt=10.0, restraintmask='(!:1-37,70-108,191-194,203-213) & !:WAT & !@H=', 
+ntr=1, restraint_wt=10.0, restraintmask='(!:1-105,140-154,189-212) & !:WAT & !@H=', 
 ig=-1,
 ioutfm=1,
 /
