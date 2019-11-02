@@ -1,0 +1,12 @@
+rm *.rst min*.out rel*.out
+pmemd -O -i min_1.ctl -o min_1.out -p J6_WT_wat.prmtop -c J6_WT_wat.inpcrd  -r min_1.rst -inf min_1.mdinfo -ref J6_WT_wat.inpcrd
+pmemd.cuda -O -i rel_2.ctl -o rel_2.out -p J6_WT_wat.prmtop -c min_1.rst -r rel_2.rst -x rel_2.nc -inf rel_2.mdinfo -ref min_1.rst
+pmemd.cuda -O -i rel_3.ctl -o rel_3.out -p J6_WT_wat.prmtop -c rel_2.rst -r rel_3.rst -x rel_3.nc -inf rel_3.mdinfo -ref rel_2.rst
+pmemd.cuda -O -i equ_4.ctl -o equ_4.out -p J6_WT_wat.prmtop -c rel_3.rst -r equ_4.rst -x equ_4.nc -inf equ_4.mdinfo -ref rel_3.rst
+pmemd.cuda -O -i equ_5.ctl -o equ_5.out -p J6_WT_wat.prmtop -c equ_4.rst -r equ_5.rst -x equ_5.nc -inf equ_5.mdinfo -ref equ_4.rst
+pmemd -O -i min_6.ctl -o min_6.out -p J6_WT_wat.prmtop -c equ_5.rst -r min_6.rst -inf min_6.mdinfo -ref equ_5.rst
+pmemd.cuda -O -i rel_7.ctl -o rel_7.out -p J6_WT_wat.prmtop -c min_6.rst -r rel_7.rst -x rel_7.nc -inf rel_7.mdinfo -ref min_6.rst
+pmemd.cuda -O -i rel_8.ctl -o rel_8.out -p J6_WT_wat.prmtop -c rel_7.rst -r rel_8.rst -x rel_8.nc -inf rel_8.mdinfo -ref rel_7.rst
+pmemd.cuda -O -i rel_9.ctl -o rel_9.out -p J6_WT_wat.prmtop -c rel_8.rst -r rel_9.rst -x rel_9.nc -inf rel_9.mdinfo -ref rel_8.rst
+pmemd.cuda -O -i rel_10.ctl -o rel_10.out -p J6_WT_wat.prmtop -c rel_9.rst -r rel_10.rst -x rel_10.nc -inf rel_10.mdinfo
+

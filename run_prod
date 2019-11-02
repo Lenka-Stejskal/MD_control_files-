@@ -1,0 +1,21 @@
+#!/bin/bash
+max_step=1
+prevstep=0
+step=1
+
+cp rel_10.rst prod_0.rst
+rm stop 
+
+while [ $step -le $max_step ]
+do
+  if [ -f stop ]
+  then
+    echo "Stop file exists - exiting"
+  exit 1
+  fi
+
+  pmemd.cuda -O -i prod.ctl -p J6_WT_Hmass_wat.prmtop  -c prod_$prevstep.rst \
+  -o prod_$step.out -r prod_$step.rst -x prod_$step.nc -inf prod_$step.info
+  prevstep=$(( $prevstep + 1))
+  step=$(( $step + 1))
+done
