@@ -1,0 +1,5 @@
+parm J6_WT_wat.prmtop 
+HmassRepartitioning
+HMassRepartition
+outparm  J6_WT_Hmass_wat.prmtop
+go
